@@ -1,4 +1,4 @@
-# Fabricator Controllers
+# Fabricator Controller Component
 
 While this component is designed with the [BuzzingPixel Fabricator Build Process] in mind, it can be used anywhere (in theory).
 
