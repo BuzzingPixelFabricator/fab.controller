@@ -3,7 +3,7 @@
  *
  * @package FAB.controller
  * @author TJ Draper <tj@buzzingpixel.com>
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 // Make sure FAB is defined
@@ -83,6 +83,10 @@ window.FAB = window.FAB || {};
 			} else if (thisObj.el instanceof jQuery) {
 				thisObj.$el = thisObj.el;
 				thisObj.el = thisObj.$el.get(0);
+
+			// Check if the incoming el is a DOM object
+			} else if (thisObj.el instanceof HTMLElement) {
+				thisObj.$el = $(thisObj.el);
 			}
 
 			// Check if model is set
@@ -92,7 +96,7 @@ window.FAB = window.FAB || {};
 					thisObj.model = new ControllerModel();
 				}
 			} else if (this.model !== undefined) {
-				this.model = null;
+				thisObj.model = null;
 			}
 
 			// Check for init
