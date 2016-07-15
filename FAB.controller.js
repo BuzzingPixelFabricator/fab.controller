@@ -3,7 +3,7 @@
  *
  * @package FAB.controller
  * @author TJ Draper <tj@buzzingpixel.com>
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 // Make sure FAB is defined
@@ -47,6 +47,9 @@ window.FAB = window.FAB || {};
 			// Set a variable for this
 			var thisObj = this;
 
+			// Clone the object
+			var newObj = $.extend(true, {}, obj);
+
 			// Set iterator key
 			var i;
 
@@ -54,9 +57,9 @@ window.FAB = window.FAB || {};
 			var ControllerModel;
 
 			// Loop through the options and set them
-			for (i in obj) {
-				if (obj.hasOwnProperty(i)) {
-					thisObj[i] = obj[i];
+			for (i in newObj) {
+				if (newObj.hasOwnProperty(i)) {
+					thisObj[i] = newObj[i];
 				}
 			}
 
@@ -74,17 +77,17 @@ window.FAB = window.FAB || {};
 				thisObj.$el = $('<div></div>');
 				thisObj.el = thisObj.$el.get(0);
 
-			// If the incoming el is a string, use as selector
+				// If the incoming el is a string, use as selector
 			} else if (typeof thisObj.el === 'string') {
 				thisObj.$el = $(thisObj.el);
 				thisObj.el = thisObj.$el.get(0);
 
-			// Check if the incoming el is a jQuery object
+				// Check if the incoming el is a jQuery object
 			} else if (thisObj.el instanceof jQuery) {
 				thisObj.$el = thisObj.el;
 				thisObj.el = thisObj.$el.get(0);
 
-			// Check if the incoming el is a DOM object
+				// Check if the incoming el is a DOM object
 			} else if (thisObj.el instanceof HTMLElement) {
 				thisObj.$el = $(thisObj.el);
 			}
@@ -170,14 +173,10 @@ window.FAB = window.FAB || {};
 				return null;
 			}
 
-			// Remove first argument from arguments
-			Array.prototype.shift.apply(arguments);
-
 			// Run the constructor
-			constructedObj = constructors[name].apply(
-				constructors[name],
-				arguments
-			);
+			constructedObj = new (Function.prototype.bind.apply(
+				constructors[name], arguments)
+			)();
 
 			// Push the constructor into the array of constructed objects
 			constructed.push(constructedObj);
