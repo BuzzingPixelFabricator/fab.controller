@@ -1,0 +1,24 @@
+{
+    "name": "fab.controller",
+    "version": "1.1.0",
+    "description": "Controllers (function sets)",
+    "homepage": "https://github.com/BuzzingPixelFabricator/fab.controller",
+    "bugs": "https://github.com/BuzzingPixelFabricator/fab.controller/issues",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/BuzzingPixelFabricator/fab.controller.git"
+    },
+    "license": "Apache-2.0",
+    "author": "BuzzingPixel, LLC",
+    "contributors": [
+        {
+            "name": "TJ Draper",
+            "url": "https://buzzingpixel.com"
+        }
+    ],
+    "fabricatorJsBuild": {
+        "files": [
+            "src/FAB.controller.js"
+        ]
+    }
+}
