@@ -199,4 +199,4 @@ function runFabController(F) {
 }
 
 // Run fab controller set up
-runFabController(window.FAB);
+runFabController(window[window.FABNAMESPACE]);
